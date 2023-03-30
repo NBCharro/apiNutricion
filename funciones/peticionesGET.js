@@ -1,15 +1,15 @@
 function obtenerTodosDatos() {
-	const datos = require('../alimentos.json');
+	const datos = require('../datosAlimentos.json');
 	return datos;
 }
 
 function listaAlimentos() {
-	const datosJSON = require('../alimentos.json');
-	let productos = [];
+	const datosJSON = require('../datosAlimentos.json');
+	let alimentos = [];
 	datosJSON.forEach(element => {
-		productos.push(element.Alimento);
+		alimentos.push(element.alimento);
 	});
-	return productos;
+	return alimentos;
 }
 
 function obtenerDatosPorID(id) {
