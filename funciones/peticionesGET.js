@@ -13,7 +13,7 @@ function listaAlimentos() {
 }
 
 function obtenerDatosPorID(id) {
-	const datosJSON = require('../alimentos.json');
+	const datosJSON = require('../datosAlimentos.json');
 	let datos = false;
 	datosJSON.forEach(element => {
 		if (element.id == id) {
@@ -24,11 +24,10 @@ function obtenerDatosPorID(id) {
 }
 
 function obtenerDatosPorNombre(nombreAlimento) {
-	const datosJSON = require('../alimentos.json');
+	const datosJSON = require('../datosAlimentos.json');
 	let datos = false;
-	console.log(nombreAlimento);
 	datosJSON.forEach(element => {
-		if (element.Alimento == nombreAlimento) {
+		if (element.alimento == nombreAlimento) {
 			datos = element;
 		}
 	});
@@ -36,10 +35,15 @@ function obtenerDatosPorNombre(nombreAlimento) {
 }
 
 function obtenerMayor(caracteristica) {
-	const datosJSON = require('../alimentos.json');
+	const datosJSON = require('../datosAlimentos.json');
 	let datos = datosJSON[0];
 	datosJSON.forEach(element => {
-		if (eval(`element.${caracteristica}`) > eval(`datos.${caracteristica}`)) {
+		if (
+			eval(`element.${caracteristica}`) > eval(`datos.${caracteristica}`)
+			|| eval(`element.lipidos.${caracteristica}`) > eval(`datos.lipidos.${caracteristica}`)
+			|| eval(`element.minerales.${caracteristica}`) > eval(`datos.minerales.${caracteristica}`)
+			|| eval(`element.vitaminas.${caracteristica}`) > eval(`datos.vitaminas.${caracteristica}`)
+			) {
 			datos = element;
 		}
 	});
@@ -47,7 +51,7 @@ function obtenerMayor(caracteristica) {
 }
 
 function obtenerMenor(caracteristica) {
-	const datosJSON = require('../alimentos.json');
+	const datosJSON = require('../datosAlimentos.json');
 	let datos = datosJSON[0];
 	datosJSON.forEach(element => {
 		if (eval(`element.${caracteristica}`) < eval(`datos.${caracteristica}`)) {
