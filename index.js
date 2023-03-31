@@ -73,8 +73,14 @@ app.post('/api/v1/alimentos', (req, res) => {
 })
 
 /* PUT */
-app.put('/api/v1/alimentos/id=:productId', (req, res) => {
-
+app.put('/api/v1/alimentos', (req, res) => {
+	const funcion = require('./funciones/peticionesPUT');
+	const modificado = funcion.modificarAlimento(req.body);
+	if(modificado){
+		res.status(200).send({ message: "Alimento modificado correctamente" });
+	}else{
+		res.status(404).send({ message: "No se ha podido modificar" });
+	}
 })
 
 /* DELETE */
