@@ -1,11 +1,13 @@
 'use sctrict'
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 /* GET */
 app.get('/api/v1/alimentos', (req, res) => {
@@ -65,9 +67,9 @@ app.post('/api/v1/alimentos', (req, res) => {
 	/* header POSTMAN: Content-Type application/json */
 	const funcion = require('./funciones/peticionesPOST');
 	const guardado = funcion.guardarAlimentoNuevo(req.body);
-	if(guardado){
+	if (guardado) {
 		res.status(200).send(req.body);
-	}else{
+	} else {
 		res.status(404).send({ message: "No se ha podido guardar" });
 	}
 })
@@ -76,9 +78,9 @@ app.post('/api/v1/alimentos', (req, res) => {
 app.put('/api/v1/alimentos', (req, res) => {
 	const funcion = require('./funciones/peticionesPUT');
 	const modificado = funcion.modificarAlimento(req.body);
-	if(modificado){
+	if (modificado) {
 		res.status(200).send({ message: "Alimento modificado correctamente" });
-	}else{
+	} else {
 		res.status(404).send({ message: "No se ha podido modificar" });
 	}
 })
@@ -87,9 +89,9 @@ app.put('/api/v1/alimentos', (req, res) => {
 app.delete('/api/v1/alimentos/id=:productId', (req, res) => {
 	const funcion = require('./funciones/peticionesDELETE');
 	const eliminado = funcion.eliminarAlimentoPorID(req.params.productId);
-	if(eliminado){
+	if (eliminado) {
 		res.status(200).send({ message: "Alimento borrado correctamente" });
-	}else{
+	} else {
 		res.status(404).send({ message: "No se ha podido borrar" });
 	}
 })
