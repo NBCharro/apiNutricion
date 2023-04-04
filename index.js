@@ -63,38 +63,38 @@ app.get('/api/v1/alimentos/menor/:caracteristica', (req, res) => {
 })
 
 /* POST */
-app.post('/api/v1/alimentos', (req, res) => {
-	/* header POSTMAN: Content-Type application/json */
-	const funcion = require('./funciones/peticionesPOST');
-	const guardado = funcion.guardarAlimentoNuevo(req.body);
-	if (guardado) {
-		res.status(200).send(req.body);
-	} else {
-		res.status(404).send({ message: "No se ha podido guardar" });
-	}
-})
+// app.post('/api/v1/alimentos', (req, res) => {
+// 	/* header POSTMAN: Content-Type application/json */
+// 	const funcion = require('./funciones/peticionesPOST');
+// 	const guardado = funcion.guardarAlimentoNuevo(req.body);
+// 	if (guardado) {
+// 		res.status(200).send(req.body);
+// 	} else {
+// 		res.status(404).send({ message: "No se ha podido guardar" });
+// 	}
+// })
 
 /* PUT */
-app.put('/api/v1/alimentos', (req, res) => {
-	const funcion = require('./funciones/peticionesPUT');
-	const modificado = funcion.modificarAlimento(req.body);
-	if (modificado) {
-		res.status(200).send({ message: "Alimento modificado correctamente" });
-	} else {
-		res.status(404).send({ message: "No se ha podido modificar" });
-	}
-})
+// app.put('/api/v1/alimentos', (req, res) => {
+// 	const funcion = require('./funciones/peticionesPUT');
+// 	const modificado = funcion.modificarAlimento(req.body);
+// 	if (modificado) {
+// 		res.status(200).send({ message: "Alimento modificado correctamente" });
+// 	} else {
+// 		res.status(404).send({ message: "No se ha podido modificar" });
+// 	}
+// })
 
 /* DELETE */
-app.delete('/api/v1/alimentos/id=:productId', (req, res) => {
-	const funcion = require('./funciones/peticionesDELETE');
-	const eliminado = funcion.eliminarAlimentoPorID(req.params.productId);
-	if (eliminado) {
-		res.status(200).send({ message: "Alimento borrado correctamente" });
-	} else {
-		res.status(404).send({ message: "No se ha podido borrar" });
-	}
-})
+// app.delete('/api/v1/alimentos/id=:productId', (req, res) => {
+// 	const funcion = require('./funciones/peticionesDELETE');
+// 	const eliminado = funcion.eliminarAlimentoPorID(req.params.productId);
+// 	if (eliminado) {
+// 		res.status(200).send({ message: "Alimento borrado correctamente" });
+// 	} else {
+// 		res.status(404).send({ message: "No se ha podido borrar" });
+// 	}
+// })
 
 /* LISTENER */
 app.listen(port, () => {
