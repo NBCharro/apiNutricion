@@ -9,6 +9,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+/* Render HTML para ver datos de la API. Es necesario instalar librerias para renderizar HTML desde node: npm i -S express-handlerbars */
+const hbs = require('express-handlebars');
+app.engine('.hbs', hbs.engine({
+	defaultLayout: 'default',
+	extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+app.get('/login', (req,res)=>{
+	res.render('login');
+})
+app.get('/', (req,res)=>{
+	res.render('home');
+})
+
 /* GET */
 app.get('/api/v1/alimentos', (req, res) => {
 	const funcion = require('./funciones/peticionesGET');
