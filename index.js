@@ -16,10 +16,10 @@ app.engine('.hbs', hbs.engine({
 	extname: '.hbs'
 }));
 app.set('view engine', '.hbs');
-app.get('/login', (req,res)=>{
+app.get('/login', (req, res) => {
 	res.render('login');
 })
-app.get('/', (req,res)=>{
+app.get('/', (req, res) => {
 	res.render('home');
 })
 
