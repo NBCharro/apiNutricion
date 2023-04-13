@@ -1,9 +1,23 @@
 // Ahora vamos a definir los tipos
 
 // weather en el diaries.json quiero que sea un enum de unos determinados valores
-export type Weather = 'sunny' | 'rainy' | 'cloudy' | 'windy' | 'stormy'
+// export type Weather = 'sunny' | 'rainy' | 'cloudy' | 'windy' | 'stormy'
+export enum Weather {
+    Sunny = 'sunny',
+    Rainy = 'rainy',
+    Cloudy = 'cloudy',
+    Windy = 'windy',
+    Stormy = 'stormy'
+}
+
 // visibility en el diaries.json quiero que sea un enum de unos determinados valores
-export type Visibility = 'great' | 'good' | 'ok' | 'poor'
+// export type Visibility = 'great' | 'good' | 'ok' | 'poor'
+export enum Visibility {
+    Great = 'great',
+    Good = 'good',
+    Ok = 'ok',
+    Poor = 'poor'
+}
 
 // Creamos una interfaz para los objetos de diaries.json
 export interface DiaryEntry {
