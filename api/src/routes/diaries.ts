@@ -1,6 +1,7 @@
 import express from 'express' // ESModules que se usa ahora. Pero transpilara a commonjs
 //const express = require(('express)) => commonjs que se usaba antes
 import * as diaryServices from '../services/diaryServices'
+import toNewDiaryEntry from '../utils'
 
 
 const router = express.Router()
