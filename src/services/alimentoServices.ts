@@ -23,9 +23,10 @@ export const obtenerAlimentosPorNombre = (nombreAlimento: string): Alimento[] =>
 	alimentos.forEach(element => {
 		if (element.alimento == nombreAlimento) {
 			alimento.push(element);
-		} else if (element.alimento.includes(nombreAlimento)) {
-			alimento.push(element);
 		}
+		//  else if (element.alimento.includes(nombreAlimento)) {
+		// 	alimento.push(element);
+		// }
 	});
 	return alimento;
 }

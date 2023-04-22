@@ -18,8 +18,8 @@ router.get('/id=:id', (req, res) => {
 })
 
 router.get('/nombre=:nombreAlimento', (req, res) => {
-	const alimento = alimentoServices.obtenerAlimentosPorNombre(req.params.nombreAlimento)
-	return alimento && alimento.length > 1 ?
+	const alimento = alimentoServices.obtenerAlimentosPorNombre(req.params.nombreAlimento);
+	return alimento && alimento.length >= 1 ?
 		res.send(alimento) : res.status(404).send({ message: "Alimento no encontrado" })
 })
 
