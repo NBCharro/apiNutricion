@@ -35,26 +35,50 @@ const obtenerAlimentosPorNombre = (nombreAlimento) => {
 };
 exports.obtenerAlimentosPorNombre = obtenerAlimentosPorNombre;
 const obtenerMayor = (caracteristica) => {
-    let alimento = alimentos[0];
+    let alimento = [];
+    let mayorValor = null;
     alimentos.forEach(element => {
-        if (eval(`element.${caracteristica}`) > eval(`alimento.${caracteristica}`)
-            || eval(`element.lipidos.${caracteristica}`) > eval(`alimento.lipidos.${caracteristica}`)
-            || eval(`element.minerales.${caracteristica}`) > eval(`alimento.minerales.${caracteristica}`)
-            || eval(`element.vitaminas.${caracteristica}`) > eval(`alimento.vitaminas.${caracteristica}`)) {
+        const valorCaracteristica = eval(`element.${caracteristica}`) ||
+            eval(`element.lipidos.${caracteristica}`) ||
+            eval(`element.minerales.${caracteristica}`) ||
+            eval(`element.vitaminas.${caracteristica}`);
+        if (valorCaracteristica != null && (mayorValor === null || valorCaracteristica > mayorValor)) {
+            // Si no es nulo y es mayor, sustituye el alimento y el valor
+            mayorValor = valorCaracteristica;
             alimento = element;
+        }
+        else if (valorCaracteristica != null && valorCaracteristica === mayorValor) {
+            // Si no es nulo y es igual, añade el alimento al array
+            if (!Array.isArray(alimento)) {
+                // Si no es un array, lo convierte en array
+                alimento = [alimento];
+            }
+            alimento.push(element);
         }
     });
     return alimento;
 };
 exports.obtenerMayor = obtenerMayor;
 const obtenerMenor = (caracteristica) => {
-    let alimento = alimentos[0];
+    let alimento = [];
+    let menorValor = null;
     alimentos.forEach(element => {
-        if (eval(`element.${caracteristica}`) < eval(`alimento.${caracteristica}`)
-            || eval(`element.lipidos.${caracteristica}`) < eval(`alimento.lipidos.${caracteristica}`)
-            || eval(`element.minerales.${caracteristica}`) < eval(`alimento.minerales.${caracteristica}`)
-            || eval(`element.vitaminas.${caracteristica}`) < eval(`alimento.vitaminas.${caracteristica}`)) {
+        const currentCaracteristicaValue = eval(`element.${caracteristica}`) ||
+            eval(`element.lipidos.${caracteristica}`) ||
+            eval(`element.minerales.${caracteristica}`) ||
+            eval(`element.vitaminas.${caracteristica}`);
+        if (currentCaracteristicaValue != null && (menorValor === null || currentCaracteristicaValue < menorValor)) {
+            // Si no es nulo y es menor, sustituye el alimento y el valor
+            menorValor = currentCaracteristicaValue;
             alimento = element;
+        }
+        else if (currentCaracteristicaValue != null && currentCaracteristicaValue === menorValor) {
+            // Si no es nulo y es igual, añade el alimento al array
+            if (!Array.isArray(alimento)) {
+                // Si no es un array, lo convierte en array
+                alimento = [alimento];
+            }
+            alimento.push(element);
         }
     });
     return alimento;
